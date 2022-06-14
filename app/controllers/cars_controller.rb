@@ -13,18 +13,25 @@ class CarsController < ApplicationController
   end
 
   def create
-    @car = Car.build(car_params)
+    @car = Car.new(car_params)
     if @car.save
-      redirect_to root_path
       flash[:success] = "Car successfully added."
+      redirect_to root_path
     else 
+      flash[:error] = "There was an issue adding the car"
       render :new
-      flash[:error] = "There was an issue adding the car" 
     end
   end
 
   def update
     @car = Car.find(params[:id])
+    if @car.update(car_params)
+      flash[:success] = "Car successfully added."
+      redirect_to root_path
+    else 
+      flash[:error] = "There was an issue updating the car"
+      render :new
+    end
   end
 
   def edit
@@ -33,12 +40,19 @@ class CarsController < ApplicationController
 
   def destroy
     @car = Car.find(params[:id])
+    if @car.destroy
+      flash[:success] = "Car successfully destroyed."
+      redirect_to root_path
+    else 
+      flash[:error] = "Something went wrong."
+      redirect_to root_path
+    end
   end
 
 
   private
 
   def car_params
-    params.permit(:car).require(:make, :model, :year)
+    params.require(:car).permit(:make, :model, :year, variants_attributes: [:name, :cost])
   end
 end

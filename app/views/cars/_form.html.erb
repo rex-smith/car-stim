@@ -14,22 +14,24 @@
       <%= form.text_field :year, placeholder: "e.g. 1992" %>
     </div>
     <ul>
-      <% @car.variants.each do |variant| %>
-        <%= form.fields_for variant, index: variant.id do |variant_form| %>
-          <%= variant_form.hidden_field :car_id, value: @car.id %>
-          <li>
-            <div class="field">
-              <%= variant_form.label :name , "Name" %>
-              <%= variant_form.text_field :name %>
-            </div>
-            <div class="field">
-              <%= variant_form.label :cost, "Cost" %>
-              <%= variant_form.number_field :cost %>
-            </div>
-          </li>
-        <% end %>
+      <%= form.fields_for :variants do |variant_form| %>
+        <%= variant_form.hidden_field :car_id, value: @car.id %>
+        <li>
+          <div class="field">
+            <%= variant_form.label :name , "Name" %>
+            <%= variant_form.text_field :name %>
+          </div>
+        </li>
+        <li>
+          <div class="field">
+            <%= variant_form.label :cost, "Cost" %>
+            <%= variant_form.number_field :cost %>
+          </div>
+        </li>
       <% end %>
     </ul>
-    <%= form.submit "Submit Car", class: "button" %>
+    <div class="center-container">
+      <%= form.submit "Submit Car", class: "button" %>
+    </div>
   <% end %>
 </div>

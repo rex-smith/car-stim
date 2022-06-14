@@ -1,9 +1,18 @@
 <% @cars.each do |car| %>
   <div class="card">
+    <h2>Car Information</h2>
     <p><strong>Make:</strong> <%= car.make %></p>
     <p><strong>Model:</strong> <%= car.model %></p>
     <p><strong>Year:</strong> <%= car.year %></p>
+    <h3>Variants</h3>
+    <% car.variants.each do |variant| %>
+      <p><strong>Name: </strong><%= variant.name %> <strong>Cost: </strong><%= variant.cost %></p>
+    <% end %>
+    <div class="container">
+      <%= link_to 'Edit', edit_car_path(car), class: "button" %>
+      <%= button_to 'Delete', car_path(car), method: :delete, class: "button" %>
+    </div>
   </div>
 <% end %>
-<%= button_to 'New Car', new_car_path, method: :get %>
+<%= button_to 'New Car', new_car_path, method: :get, class: "button"%>
 <%# <%= render 'form' %>
