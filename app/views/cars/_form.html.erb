@@ -1,0 +1,35 @@
+<h1>Car</h1>
+<div class="form-container">
+  <%= form_with model: @car do |form| %>
+    <div class="field">
+      <%= form.label :make, "Make" %>
+      <%= form.text_field :make, autofocus: true, placeholder: "e.g. Ford" %>
+    </div>
+    <div class="field">
+      <%= form.label :model, "Model" %>
+      <%= form.text_field :model, placeholder: "e.g. F150" %>
+    </div>
+    <div class="field">
+      <%= form.label :year, "Year" %>
+      <%= form.text_field :year, placeholder: "e.g. 1992" %>
+    </div>
+    <ul>
+      <% @car.variants.each do |variant| %>
+        <%= form.fields_for variant, index: variant.id do |variant_form| %>
+          <%= variant_form.hidden_field :car_id, value: @car.id %>
+          <li>
+            <div class="field">
+              <%= variant_form.label :name , "Name" %>
+              <%= variant_form.text_field :name %>
+            </div>
+            <div class="field">
+              <%= variant_form.label :cost, "Cost" %>
+              <%= variant_form.number_field :cost %>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+    <%= form.submit "Submit Car", class: "button" %>
+  <% end %>
+</div>

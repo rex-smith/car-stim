@@ -1,0 +1,9 @@
+<% @cars.each do |car| %>
+  <div class="card">
+    <p><strong>Make:</strong> <%= car.make %></p>
+    <p><strong>Model:</strong> <%= car.model %></p>
+    <p><strong>Year:</strong> <%= car.year %></p>
+  </div>
+<% end %>
+<%= button_to 'New Car', new_car_path, method: :get %>
+<%# <%= render 'form' %>

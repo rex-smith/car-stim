@@ -1,0 +1,77 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+ .center-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+ }
+
+ .container {
+  display: flex;
+ }
+
+ .card {
+  box-shadow: 1px 1px 1px darkblue;
+ }
+
+ .field {
+
+ }
+
+ h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: purple;
+ }
+
+ h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: purple;
+ }
+
+ h3 {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: purple;
+ }
+
+.button {
+  display:inline-block;
+  padding:0.7em 1.7em;
+  margin:0 0.3em 0.3em 0;
+  border-radius:0.2em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  font-weight:400;
+  color:#FFFFFF;
+  background-color:#3369ff;
+  box-shadow:inset 0 -0.6em 1em -0.35em rgba(0,0,0,0.17),inset 0 0.6em 2em -0.3em rgba(255,255,255,0.15),inset 0 0 0em 0.05em rgba(255,255,255,0.12);
+  text-align:center;
+  position:relative;
+}
+.button:active{
+  box-shadow:inset 0 0.6em 2em -0.3em rgba(0,0,0,0.15),inset 0 0 0em 0.05em rgba(255,255,255,0.12);
+}
+@media all and (max-width:30em){
+  .button{
+    display:block;
+    margin:0.4em auto;
+  }
+}
